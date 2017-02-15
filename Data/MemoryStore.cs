@@ -9,7 +9,7 @@ namespace FisherInsuranceApi.Data
         // A list that runs in-memory and holds quotes
         private Dictionary<int, Quote> quotes;
 
-        // Constructor
+        // Constructor. This fills our in memory store with quotes for Auto Insurance
         public MemoryStore()
         {
             quotes = new Dictionary<int, Quote>();
