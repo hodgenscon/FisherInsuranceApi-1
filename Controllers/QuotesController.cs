@@ -1,7 +1,6 @@
 using FisherInsuranceApi.Data;
 using FisherInsuranceApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace FisherInsuranceApi.Controllers
 {
@@ -19,21 +18,20 @@ namespace FisherInsuranceApi.Controllers
         [HttpGet]
         public IActionResult GetQuotes()
         {
-            return Ok(db.Quotes.Where(q => q.Price > 90));
+            return Ok(db.Quotes);
 
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            return Ok(db.Quotes.Find(id));
         }
 
         [HttpPost]
         public IActionResult Post([FromBody] Quote quote)
         {
             return Ok(db.Quotes.Add(quote));
-        }
-
-
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
-        {
-            return Ok(db.Quotes.Find(id));
         }
 
 
