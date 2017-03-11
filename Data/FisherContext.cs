@@ -10,8 +10,9 @@ namespace FisherInsuranceApi.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connenction = "User ID=fisher;Password=fisher;Host=localhost;Port=5432;Database=fisher;Pooling=true;";
-            optionsBuilder.UseNpgsql(connenction); 
+            string connection = "User ID=fisher;Password=fisher;Host=localhost;Port=5432;Database=fisher-insurance;Pooling=false;";
+            
+            optionsBuilder.UseNpgsql(connection);
         }
     }
 }

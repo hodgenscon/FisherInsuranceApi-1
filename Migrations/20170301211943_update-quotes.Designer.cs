@@ -8,8 +8,8 @@ using FisherInsuranceApi.Data;
 namespace FisherInsuranceApi.Migrations
 {
     [DbContext(typeof(FisherContext))]
-    [Migration("20170226172408_init")]
-    partial class init
+    [Migration("20170301211943_update-quotes")]
+    partial class updatequotes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

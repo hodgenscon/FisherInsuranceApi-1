@@ -24,30 +24,12 @@ namespace FisherInsuranceApi.Migrations
                 {
                     table.PrimaryKey("PK_Claims", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Quotes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    ExpireDate = table.Column<DateTime>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
-                    Product = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Quotes", x => x.Id);
-                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Claims");
-
-            migrationBuilder.DropTable(
-                name: "Quotes");
         }
     }
 }

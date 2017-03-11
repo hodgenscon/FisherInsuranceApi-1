@@ -8,12 +8,12 @@ namespace FisherInsuranceApi.Controllers
     public class ClaimsController : Controller
     {
 
-       private readonly FisherContext db;
+        private readonly FisherContext db;
 
-       public ClaimsController(FisherContext context)
-       {
-           db = context;
-       }
+        public ClaimsController(FisherContext context)
+        {
+            db = context;
+        }
 
         [HttpGet]
         public IActionResult GetClaims()
@@ -21,7 +21,7 @@ namespace FisherInsuranceApi.Controllers
             return Ok(db.Claims);
 
         }
-        
+
         [HttpPost]
         public IActionResult Post([FromBody] Claim claim)
         {
@@ -29,10 +29,10 @@ namespace FisherInsuranceApi.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("GetClaim", new { id = claim.Id }, claim);
-}
+        }
 
 
-        [HttpGet("{id}", Name="GetClaim")]
+        [HttpGet("{id}", Name = "GetClaim")]
         public IActionResult Get(int id)
         {
             return Ok(db.Claims.Find(id));
@@ -40,17 +40,21 @@ namespace FisherInsuranceApi.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Claim claim)
+        public IActionResult Put(int id, [FromBody] Claim newClaim)
         {
-            var newClaim = db.Claims.Find(id);
-            if (newClaim == null)
+            var claim = db.Claims.Find(id);
+            if (claim == null)
             {
                 return NotFound();
             }
-            newClaim = claim;
-            newClaim.Id = id; 
+
+            claim = newClaim;
+            claim.Id = id;
+
+            db.Update(claim);
             db.SaveChanges();
-            return Ok(newClaim);
+            
+            return Ok(claim);
         }
 
 
@@ -63,17 +67,9 @@ namespace FisherInsuranceApi.Controllers
                 return NotFound();
             }
 
-            try
-            {
-                db.Claims.Remove(claimToDelete);
-                db.SaveChangesAsync();
-            }
-            catch (System.Exception)
-            {
-                //log
-                return BadRequest();
-            }
-            
+            db.Claims.Remove(claimToDelete);
+            db.SaveChangesAsync();
+
             return NoContent();
 
         }
