@@ -15,6 +15,7 @@ import { QuotesComponent } from './components/quotes/quotes.component';
 import { AppRouting } from './app.routing';
 import { AuthService } from "./auth.service";
 import { AuthHttp } from "./auth.http";
+import { JwtHelper } from "./jwt.helper";
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { AuthHttp } from "./auth.http";
     ],
     providers: [
         AuthService,
-        AuthHttp
+        AuthHttp,
+        QuotesService,
+        JwtHelper
     ],
     bootstrap: [
         AppComponent

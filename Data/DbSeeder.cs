@@ -92,7 +92,8 @@ namespace FisherInsuranceApi.Data
         {
             if (await UserManager.FindByIdAsync(user.Id) == null)
             {
-                var result = await UserManager.CreateAsync(user, "P@ssw0rd");
+                await UserManager.CreateAsync(user, "P@ssw0rd");
+                await UserManager.AddToRoleAsync(user, role);
             }
         }
     }
