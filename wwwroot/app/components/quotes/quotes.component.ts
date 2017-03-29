@@ -10,9 +10,4 @@ export class QuotesComponent {
     constructor(
         private authService: AuthService
     ){}
-
-    ngOnInit()
-    {
-        this.authService.getToken();
-    }
 }

@@ -38,7 +38,6 @@ import { JwtHelper } from "./jwt.helper";
     providers: [
         AuthService,
         AuthHttp,
-        QuotesService,
         JwtHelper
     ],
     bootstrap: [

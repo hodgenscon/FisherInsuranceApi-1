@@ -90,7 +90,7 @@ namespace FisherInsuranceApi.Data
 
         private async Task CreateUserAsync(ApplicationUser user, string role)
         {
-            if (await UserManager.FindByIdAsync(user.Id) == null)
+            if (await UserManager.FindByEmailAsync(user.Email) == null)
             {
                 await UserManager.CreateAsync(user, "P@ssw0rd");
                 await UserManager.AddToRoleAsync(user, role);
