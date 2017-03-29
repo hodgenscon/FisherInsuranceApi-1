@@ -1,39 +1,23 @@
-# Welcome to ASP.NET Core
+# Lab 7 Walkthrough
 
-We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
+This assumes that your `lab-six` branch looks like mine. See [FisherInsuranceApi - Lab 6](https://github.com/amis-3610-sp17/FisherInsuranceApi/tree/lab-six)
 
-You've created a new ASP.NET Core project. [Learn what's new](https://go.microsoft.com/fwlink/?LinkId=518016)
 
-## This application consists of:
+## Exercise 0
 
-*   Sample pages using ASP.NET Core MVC
-*   [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
-*   Theming using [Bootstrap](https://go.microsoft.com/fwlink/?LinkID=398939)
+We start by removing project.json and adding FisherInsuaranceApi.csproj.
 
-## How to
+When you build, you may get the following error:
 
-*   [Add a Controller and View](https://go.microsoft.com/fwlink/?LinkID=398600)
-*   [Add an appsetting in config and access it in app.](https://go.microsoft.com/fwlink/?LinkID=699562)
-*   [Manage User Secrets using Secret Manager.](https://go.microsoft.com/fwlink/?LinkId=699315)
-*   [Use logging to log a message.](https://go.microsoft.com/fwlink/?LinkId=699316)
-*   [Add packages using NuGet.](https://go.microsoft.com/fwlink/?LinkId=699317)
-*   [Add client packages using Bower.](https://go.microsoft.com/fwlink/?LinkId=699318)
-*   [Target development, staging or production environment.](https://go.microsoft.com/fwlink/?LinkId=699319)
+*Program.cs(13,18): error CS1061: 'ConfigurationBuilder' does not contain a definition for 'AddCommandLine' and no extension method 'AddCommandLine' accepting a first argument of type 'ConfigurationBuilder' could be found (are you missing a using directive or an assembly reference?) [C:\Dojo\amis\FisherInsuranceApi\FisherInsuranceApi.csproj]*
 
-## Overview
+You have two options:
+1. Remove the offending lines of code
+2. Add the missing references. I am going to add the missing reference:
+* `dotnet add package Microsoft.Extensions.Configuration.CommandLine`
 
-*   [Conceptual overview of what is ASP.NET Core](https://go.microsoft.com/fwlink/?LinkId=518008)
-*   [Fundamentals of ASP.NET Core such as Startup and middleware.](https://go.microsoft.com/fwlink/?LinkId=699320)
-*   [Working with Data](https://go.microsoft.com/fwlink/?LinkId=398602)
-*   [Security](https://go.microsoft.com/fwlink/?LinkId=398603)
-*   [Client side development](https://go.microsoft.com/fwlink/?LinkID=699321)
-*   [Develop on different platforms](https://go.microsoft.com/fwlink/?LinkID=699322)
-*   [Read more on the documentation site](https://go.microsoft.com/fwlink/?LinkID=699323)
+We could have gone either way here. `AddCommandLine()` method allows us to pass aruments into our run command: `dotnet run --environment "Staging"` 
 
-## Run & Deploy
+Your project should build successfully. 
 
-*   [Run your app](https://go.microsoft.com/fwlink/?LinkID=517851)
-*   [Run tools such as EF migrations and more](https://go.microsoft.com/fwlink/?LinkID=517853)
-*   [Publish to Microsoft Azure Web Apps](https://go.microsoft.com/fwlink/?LinkID=398609)
-
-We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)
+## Exercise 1
