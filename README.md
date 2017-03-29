@@ -30,4 +30,17 @@ On step 3, the original lab said to have FisherContext inherit like this: `Ident
 
 On Step 5, it is not explicit that you need to add the proper using statement `using Microsoft.AspNetCore.Identity.EntityFrameworkCore;`
 
+## Exercise 2
 
+The original lab had was missing a '/' in the token URL. the TokenEndPoint should be:
+`public static string TokenEndPoint = "/api/connect/token";`
+
+On Step 12, you of course will need to hit the 'Lightbuld' to add the following using statements:
+      `using Microsoft.IdentityModel.Tokens;`
+      `using FisherInsuranceApi.Security;`
+
+You still may see the following error:
+
+*Startup.cs(48,27): error CS1061: 'ILoggerFactory' does not contain a definition for 'AddDebug' and no extension method 'AddDebug' accepting a first argument of type 'ILoggerFactory' could be found (are you missing a using directive or an assembly reference?) [C:\Dojo\amis\FisherInsuranceApi\FisherInsuranceApi.csproj]*
+
+You can fix this by deleting the offending line of code or by running `dotnet add package Microsoft.Extensions.Logging.Debug`
