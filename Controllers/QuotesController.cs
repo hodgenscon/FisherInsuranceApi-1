@@ -1,5 +1,6 @@
 using FisherInsuranceApi.Data;
 using FisherInsuranceApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FisherInsuranceApi.Controllers
@@ -22,24 +23,26 @@ namespace FisherInsuranceApi.Controllers
 
         }
 
-        [HttpGet("{id}", Name="GetQuote")]
+        [HttpGet("{id}", Name = "GetQuote")]
         public IActionResult Get(int id)
         {
             return Ok(db.Quotes.Find(id));
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] Quote quote)
         {
             var newQuote = db.Quotes.Add(quote);
             db.SaveChanges();
 
             return CreatedAtRoute("GetQuote", new { id = quote.Id }, newQuote);
-            
+
         }
 
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, [FromBody] Quote newQuote)
         {
             var quote = db.Quotes.Find(id);
@@ -48,7 +51,7 @@ namespace FisherInsuranceApi.Controllers
                 return NotFound();
             }
             quote = newQuote;
-            quote.Id = id; 
+            quote.Id = id;
             db.Update(quote);
             db.SaveChanges();
             return Ok(quote);
@@ -56,9 +59,10 @@ namespace FisherInsuranceApi.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
-             var quoteToDelete = db.Quotes.Find(id);
+            var quoteToDelete = db.Quotes.Find(id);
             if (quoteToDelete == null)
             {
                 return NotFound();

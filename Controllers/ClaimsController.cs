@@ -1,5 +1,6 @@
 using FisherInsuranceApi.Data;
 using FisherInsuranceApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FisherInsuranceApi.Controllers
@@ -23,6 +24,7 @@ namespace FisherInsuranceApi.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] Claim claim)
         {
             var newClaim = db.Claims.Add(claim);
@@ -40,6 +42,7 @@ namespace FisherInsuranceApi.Controllers
 
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, [FromBody] Claim newClaim)
         {
             var claim = db.Claims.Find(id);
@@ -53,14 +56,20 @@ namespace FisherInsuranceApi.Controllers
 
             db.Update(claim);
             db.SaveChanges();
-            
+
             return Ok(claim);
         }
 
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
+            if (!User.IsInRole("Administrators"))
+            {
+                return Unauthorized();
+            }
+
             var claimToDelete = db.Claims.Find(id);
             if (claimToDelete == null)
             {
