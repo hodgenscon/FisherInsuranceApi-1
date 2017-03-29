@@ -1,23 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'rxjs/Rx';
-
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { ClaimsComponent } from './components/claims/claims.component';
+import { QuotesComponent } from './components/quotes/quotes.component';
+
+import { AppRouting } from './app.routing';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
-        NavBarComponent
+        NavBarComponent,
+        LoginComponent,
+        ClaimsComponent,
+        QuotesComponent
     ],
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        AppRouting 
     ],
     providers: [
 

@@ -44,3 +44,9 @@ You still may see the following error:
 *Startup.cs(48,27): error CS1061: 'ILoggerFactory' does not contain a definition for 'AddDebug' and no extension method 'AddDebug' accepting a first argument of type 'ILoggerFactory' could be found (are you missing a using directive or an assembly reference?) [C:\Dojo\amis\FisherInsuranceApi\FisherInsuranceApi.csproj]*
 
 You can fix this by deleting the offending line of code or by running `dotnet add package Microsoft.Extensions.Logging.Debug`
+
+## Exercise 3
+
+If you follow the directions, this exercise should 'just work'.
+
+## Exercise 4
