@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace FisherInsuranceApi
 {
@@ -24,8 +25,18 @@ namespace FisherInsuranceApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FisherContext>();
             services.AddMvc();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Cookies.ApplicationCookie.AutomaticChallenge = false;
+            })
+            .AddEntityFrameworkStores<FisherContext>()
+            .AddDefaultTokenProviders();
+
+            services.AddDbContext<FisherContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

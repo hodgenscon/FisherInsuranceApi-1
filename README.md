@@ -21,3 +21,13 @@ We could have gone either way here. `AddCommandLine()` method allows us to pass 
 Your project should build successfully. 
 
 ## Exercise 1
+
+For some reason, on Step 2, many people had issues with `using Microsoft.AspNetCore.Identity.EntityFrameworkCore;` not resolving. There are two different solutions that appeard to work.
+1. Close FisherContext.cs and run `dotnet restore` and `dotnet build`
+2. Close VS Code and run `dotnet restore` and `dotnet build` in a seperate terminal (Powershell for Win, Terminal for Mac; if your are running Linux, see me for 5 free bonus points)
+
+On step 3, the original lab said to have FisherContext inherit like this: `IdentityDbContext<Applicationuser>` with a lower-cased 'user'. The correct implementation should have been `IdentityDbContext<ApplicationUser>` with upper-case 'User'. Some people had issues with the 'Lightbulb' giving the option to generate the new file. If that happened to you, simply create an ApplicationUser.cs file in the Data folder. Be sure to give it a namespace of 'FisherInsuranceApi.Data'
+
+On Step 5, it is not explicit that you need to add the proper using statement `using Microsoft.AspNetCore.Identity.EntityFrameworkCore;`
+
+
