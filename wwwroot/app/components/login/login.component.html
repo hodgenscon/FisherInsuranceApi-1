@@ -4,7 +4,8 @@
         <strong>Warning:</strong> Username or Password mismatch
     </div>
     <form class="form-login" [formGroup]="loginForm" (submit)="performLogin($event)">
-        <input formControlName="username" type="text" class="form-control" placeholder="Your username or e-mail address" required autofocus />
+        <input formControlName="username" type="text" class="form-control" placeholder="Your username or e-mail address" required
+            autofocus />
         <input formControlName="password" type="password" class="form-control" placeholder="Your password" required />
         <div class="checkbox">
             <label>

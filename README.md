@@ -50,3 +50,13 @@ You can fix this by deleting the offending line of code or by running `dotnet ad
 If you follow the directions, this exercise should 'just work'.
 
 ## Exercise 4
+
+There were some updates from the initial lab to the lab currently on Carmen. Be sure that you have the latest lab.
+
+If you follow the updated lab, things should work.
+
+You should be able to note the following:
+* When you try to login, you will receive an error in the UI: "Warning: Username or Password mismatch"
+* If you open the browser's dev tools, you should be able to see a '400: Bad Request' coming back from 'api/connect/token'
+
+
